@@ -18,7 +18,7 @@ public class IO_bmi {
 		
 		IO.writeln ("Your BMI is: " + IO.round(bmi, 2));
 		
-	
+	// IO Methode
 		
 	}
 
