@@ -1,4 +1,6 @@
-package grundlage;
+package Aufgaben1;
+
+import utils.IO;
 
 public class IntegerRechnungen {
 

@@ -1,4 +1,4 @@
-package grundlage;
+package Aufgaben2;
 
 import java.util.Scanner;
 

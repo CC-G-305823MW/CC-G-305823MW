@@ -1,7 +1,6 @@
-package grundlage;
+package Aufgaben1;
 
 import java.util.Scanner;
-import java.io.*;
 
 public class BMI {
 
