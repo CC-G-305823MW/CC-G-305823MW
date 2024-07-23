@@ -1,6 +1,6 @@
 package utils;
 
-public class Methods {
+public class UtilString {
 
 	
 
