@@ -1,9 +1,12 @@
 package UMLBestellung;
 
 import java.util.ArrayList;
+
+import java.util.Arrays;
 import java.util.List;
 
 import utils.IO;
+import java.util.Date;
 
 public class ProgrammBestellung {
 
@@ -17,37 +20,44 @@ public class ProgrammBestellung {
 		Produkt produkt2 = new Produkt(2, "Orangensaft", 1.99);
 		produktListe.add(produkt2);
 
-		saftLaden.setProdukte(produktListe); 		// Verkäufer Angebot
+		saftLaden.setProdukte(produktListe); // Verkäufer Angebot
 
 		Kunde kunde1 = new Kunde(1, "Martin", "bei@spiel.de", "Bruchtal 69");
-
-		List<Warenkorb> warenkorb = new ArrayList<Warenkorb>();
-
 		
-		// Produkt zu Warenkorb hinzufügen
-		int produktId = IO.promptAndReadInt(
-				"Welches Produkt möchten sie hinzufügen?" + " Wähle '1' für Apfelsaft oder '2' für Orangensaft.");
-
-		switch (produktId) {
-		case 1:
-			warenkorb.add((Warenkorb) produkt1);
-			break;
-		case 2:
-			warenkorb.add((Warenkorb) produkt2);
-			break;
-		default:
-			System.out.println("Unpassende Eingabe. Bitte wähle 1 oder 2.");
-		}
-		System.out.println(warenkorb);
+		Warenkorb warenkorb1 = new Warenkorb(kunde1);
 		
-		int anzahl = IO.promptAndReadInt("Wie viele Einheiten möchten sie kaufen? Geben sie eine ganze Zahl ein");
-		switch (anzahl) {
-		case 1:
-			;
-		default:
-			System.out.println("Fehler. Es wurde keine ganze Zahl eingegeben.");
+		boolean auswahl = true;
+		while (auswahl) {
+			
+			int x = IO.promptAndReadInt("Welches Produkt möchten sie dem Warenkorb hinzufügen? "
+					+ "Wähle 1 für Apfelsaft oder 2 für Orangensaft."
+					+ "Wähle 3 wenn du fertig bist.");
+			switch (x) {
+				case 1: 
+					warenkorb1.produktHinzufuegen(produkt1);
+					break;
+					// Anzahl abfragen
+				case 2:
+					warenkorb1.produktHinzufuegen(produkt2);
+					break;
+				case 3:
+					auswahl = false;
+					break;
+				default:
+					System.out.println("Falsche Eingabe, wähle 1 oder 2.");
+					break;
+			}
+			
 		}
-		System.out.println("Anzahl: " +anzahl);
-
+		
+		
+		
+		// System.out.println(warenkorb);
+		 //System.out.println( warenkorb1.getGesamtsumme());
+			
+		Bestellung bestellung1 = new Bestellung(1, kunde1, warenkorb1,
+				warenkorb1.getGesamtsumme());
+	
+		System.out.println(bestellung1);
 	}
 }

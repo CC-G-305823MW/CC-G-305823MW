@@ -1,50 +1,63 @@
 package UMLBestellung;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Warenkorb extends Produkt {
+public class Warenkorb {
 
-	protected List<Warenkorb> warenkorb;
+	protected List<Produkt> produkte;
 
-	protected int anzahl;
+	private Kunde kunde;
 
 	protected double gesamtsumme;
 
-	public List<Warenkorb> getWarenkorb() {
-		return warenkorb;
+	protected double preis;
+
+	public List<Produkt> getProdukte() {
+		return produkte;
+	}
+	
+	public void setProdukte(List<Produkt> produkte) {
+		this.produkte = produkte;
 	}
 
-	public void setWarenkorb(List<Warenkorb> warenkorb) {
-		this.warenkorb = warenkorb;
-	}
-
-	public int getAnzahl() {
-		return anzahl;
-	}
-
-	public void setAnzahl(int anzahl) {
-		this.anzahl = anzahl;
+	private double berechneGesamtSumme () {
+		double summe = 0;
+		for (Produkt produkt : this.produkte) {
+			summe += produkt.getPreis();
+		}
+		return summe;
 	}
 
 	public double getGesamtsumme() {
-		return gesamtsumme;
-	}
-
-	public void setGesamtsumme(double gesamtsumme) {
-		this.gesamtsumme = preis * anzahl;
+		return berechneGesamtSumme();
 	}
 
 	@Override
 	public String toString() {
-		return "Warenkorb [warenkorb=" + warenkorb + ", anzahl=" + anzahl + ", gesamtsumme=" + gesamtsumme + "]";
+		return "Warenkorb [produkte=" + produkte + ", gesamtsumme=" + gesamtsumme + "]";
 	}
 
-	public Warenkorb(int produktId, String bezeichnung, double preis, List<Warenkorb> warenkorb, int anzahl,
-			double gesamtsumme) {
-		super(produktId, bezeichnung, preis);
-		this.warenkorb = warenkorb;
-		this.anzahl = anzahl;
-		this.gesamtsumme = gesamtsumme;
+	public Warenkorb(Kunde kunde, List<Produkt> produkte) {
+		this();
+		this.kunde = kunde;
+		this.produkte = produkte;
+		
 	}
 
+	public void produktHinzufuegen(Produkt produkt) {
+		this.produkte.add(produkt);
+	}
+
+	public Warenkorb(Kunde kunde) {
+		this();
+		this.kunde = kunde;
+	}
+
+	public Warenkorb() {
+		super();
+		this.produkte = new ArrayList<Produkt>();
+	}
+	
+	
 }

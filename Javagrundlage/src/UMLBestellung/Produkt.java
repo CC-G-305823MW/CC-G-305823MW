@@ -8,6 +8,8 @@ public class Produkt {
 	
 	public double preis;
 
+	public int anzahl; //getter Setter...
+	
 	public int getProduktId() {
 		return produktId;
 	}
@@ -34,7 +36,7 @@ public class Produkt {
 
 	@Override
 	public String toString() {
-		return "Produkt [produktId=" + produktId + ", bezeichnung=" + bezeichnung + ", preis=" + preis + "]";
+		return "Produkt [produktId=" + produktId + ", bezeichnung=" + bezeichnung + ", preis=" + preis + "]\n";
 	}
 
 	public Produkt(int produktId, String bezeichnung, double preis) {
